@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_nasa_pics"
+    app:startDestination="@id/grid_fragment">
+
+    <fragment
+        android:id="@+id/grid_fragment"
+        android:name="com.example.nasapicsappsample.ui.grid.GridFragment"
+        tools:layout="@layout/fragment_grid" />
+
+</navigation>
