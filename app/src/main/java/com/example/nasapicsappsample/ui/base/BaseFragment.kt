@@ -1,4 +1,4 @@
-package com.example.nasapicsappsample.base
+package com.example.nasapicsappsample.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
