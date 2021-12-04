@@ -1,10 +1,10 @@
 package com.example.nasapicsappsample.ui.grid
 
-import android.util.Log
-import com.example.nasapicsappsample.ui.base.BaseFragment
+import android.os.Bundle
 import com.example.nasapicsappsample.R
 import com.example.nasapicsappsample.data.Item
 import com.example.nasapicsappsample.databinding.FragmentGridBinding
+import com.example.nasapicsappsample.ui.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +19,11 @@ class GridFragment : BaseFragment<GridViewModel, FragmentGridBinding>(),
 
     override fun initViewModel() {
         super.initViewModel()
+
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         viewModel.getItems(requireContext())
     }
 
@@ -38,6 +43,6 @@ class GridFragment : BaseFragment<GridViewModel, FragmentGridBinding>(),
     }
 
     override fun onItemClick(item: Item) {
-
+        screenNavigator.openDetailScreen(item)
     }
 }

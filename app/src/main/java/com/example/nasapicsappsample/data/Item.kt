@@ -1,7 +1,10 @@
 package com.example.nasapicsappsample.data
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Item(
     var copyright: String = "",
     var date: String = "",
@@ -14,4 +17,4 @@ data class Item(
     var serviceVersion: String = "",
     var title: String = "",
     var url: String = "",
-)
+):Parcelable

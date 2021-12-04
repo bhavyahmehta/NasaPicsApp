@@ -19,6 +19,7 @@ abstract class BaseFragment<VIEW_MODEL, VIEW_BINDING> :
 
     val mainActivity get() = activity as? MainActivity
     val navController get() = findNavController()
+    val screenNavigator get() = (activity as MainActivity).screenNavigator
 
     abstract fun getLayoutId(): Int
     abstract fun getViewModelClass(): Class<out VIEW_MODEL>
@@ -33,10 +34,15 @@ abstract class BaseFragment<VIEW_MODEL, VIEW_BINDING> :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViewModel()
+        handleToolbarVisibility()
         observeViewModel()
         initViews()
         initClickListeners()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        initViewModel()
     }
 
     open fun createViewModel(): VIEW_MODEL = ViewModelProvider(this)[getViewModelClass()]
@@ -54,5 +60,9 @@ abstract class BaseFragment<VIEW_MODEL, VIEW_BINDING> :
 
     fun finish() {
         findNavController().navigateUp()
+    }
+
+    private fun handleToolbarVisibility() {
+        (activity as? MainActivity)?.showToolbar(showToolbar())
     }
 }

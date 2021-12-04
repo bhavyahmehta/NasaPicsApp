@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="gridItem"
             type="com.example.nasapicsappsample.data.Item" />
@@ -16,9 +18,9 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/card_side_margin"
-        android:layout_marginEnd="@dimen/card_side_margin"
-        android:layout_marginBottom="@dimen/card_bottom_margin"
+        android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginEnd="@dimen/margin_small"
+        android:layout_marginBottom="@dimen/margin_normal"
         android:clickable="true"
         android:focusable="true"
         android:onClick="@{()->clickListener.onItemClick(gridItem)}"
@@ -31,10 +33,11 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/grid_imageView"
+                imageUrl="@{gridItem.url}"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/grid_item_image_height"
                 android:scaleType="centerCrop"
-                imageUrl="@{gridItem.url}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -43,24 +46,19 @@
                 android:id="@+id/grid_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@color/translucent_black"
+                android:ellipsize="end"
                 android:gravity="center_horizontal"
+                android:maxLines="2"
+                android:padding="@dimen/padding_extra_small"
                 android:text="@{gridItem.title}"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                android:textSize="@dimen/text_small"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/grid_imageView" />
+                tools:text="Title" />
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/grid_date"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_extra_small"
-                android:gravity="center_horizontal"
-                android:text="@{gridItem.date}"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/grid_title" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
